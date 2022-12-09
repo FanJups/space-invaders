@@ -15,7 +15,7 @@ public abstract class Constantes {
 
     // Position initiale du vaisseau
     // Centrer le vaisseau
-    public final static int X_POS_INIT_VAISSEAU = (LARGEUR_FENETRE - LARGEUR_VAISSEAU)/ 2;
+    public final static int X_POS_INIT_VAISSEAU = (LARGEUR_FENETRE - LARGEUR_VAISSEAU) / 2;
     public final static int Y_POS_VAISSEAU = 490;
 
     // Unité de déplacement du vaisseau
@@ -28,7 +28,7 @@ public abstract class Constantes {
     /************************************* ALIEN ***************************************/
     // Dimensions de l'alien
     public static final int LARGEUR_ALIEN = 33;
-    public static final int HAUTEUR_ALIEN= 25;
+    public static final int HAUTEUR_ALIEN = 25;
 
     // Paramètres de position des aliens
     public final static int ALT_INIT_ALIEN = 120;
@@ -37,6 +37,7 @@ public abstract class Constantes {
     public final static int ECART_COLONNES_ALIEN = 10;
 
     // Unité de déplacement de l'alien
-    public final static int DX_ALIEN = 5;
-    public final static int DY_ALIEN = 25;
+    public final static int DX_ALIEN = 2;
+    public final static int DY_ALIEN = 20;
+    public static final int VITESSE_ALIEN = 1;
 }

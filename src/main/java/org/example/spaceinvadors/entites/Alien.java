@@ -4,7 +4,7 @@ import org.example.spaceinvadors.ressources.Constantes;
 
 import javax.swing.*;
 
-public class Alien extends Entite{
+public class Alien extends Entite {
 
     public Alien(int xPos, int yPos, String strImg1, String strImg2) {
 
@@ -24,4 +24,18 @@ public class Alien extends Entite{
         super.ico = new ImageIcon(getClass().getResource(super.strImg1));
         super.img = this.ico.getImage();
     }
+
+    /**** METHODES ****/
+    public void choixImage(boolean pos1) {
+        // Méthode qui charge l'image de l'alien selon son état et sa position (1 ou 2)
+
+        if (pos1) {
+            super.ico = new ImageIcon(getClass().getResource(strImg1));
+        } else {
+            super.ico = new ImageIcon(getClass().getResource(strImg2));
+        }
+
+        super.img = this.ico.getImage(); // recharge l'image
+    }
+
 }

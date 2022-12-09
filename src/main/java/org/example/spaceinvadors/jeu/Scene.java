@@ -14,7 +14,7 @@ public class Scene extends JPanel {
     public Vaisseau vaisseau = new Vaisseau();
     public GroupeAliens groupeAliens = new GroupeAliens();
 
-    public  Scene(){
+    public Scene() {
         super();
 
         this.setFocusable(true);
@@ -26,7 +26,7 @@ public class Scene extends JPanel {
         chronoEcran.start();
     }
 
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
 
@@ -41,8 +41,7 @@ public class Scene extends JPanel {
         g2.fillRect(30, 530, 535, 5);
 
         // Dessin du vaisseau
-        g2.drawImage(this.vaisseau.getImg(), this.vaisseau.deplacementVaisseau(), this.vaisseau.getyPos(), null);
-
+        this.vaisseau.dessinVaisseau(g2);
 
         // Dessin des aliens
         this.groupeAliens.dessinAliens(g2);

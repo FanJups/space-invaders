@@ -3,6 +3,7 @@ package org.example.spaceinvadors.entites;
 import org.example.spaceinvadors.ressources.Constantes;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Vaisseau extends Entite {
 
@@ -30,9 +31,22 @@ public class Vaisseau extends Entite {
     /**** METHODES ****/
     public int deplacementVaisseau() {
         // Renvoie la nouvelle position du vaisseau après déplacement éventuel
-        if(this.dx < 0){if(this.xPos > Constantes.LIMITE_GAUCHE_VAISSEAU) {this.xPos = this.xPos + this.dx;}
-        }else if(dx > 0) {if(this.xPos + this.dx < Constantes.LIMITE_DROITE_VAISSEAU) {this.xPos = this.xPos + this.dx;}}
+        if (this.dx < 0) {
+            if (this.xPos > Constantes.LIMITE_GAUCHE_VAISSEAU) {
+                this.xPos = this.xPos + this.dx;
+            }
+        } else if (dx > 0) {
+            if (this.xPos + this.dx < Constantes.LIMITE_DROITE_VAISSEAU) {
+                this.xPos = this.xPos + this.dx;
+            }
+        }
         return this.xPos;
+    }
+
+
+    public void dessinVaisseau(Graphics g) {
+
+        g.drawImage(this.img, this.deplacementVaisseau(), this.yPos, null);
     }
 
 }

@@ -6,9 +6,9 @@ import javax.swing.*;
 
 public class Main {
 
-    public static  Scene scene;
+    public static Scene scene;
 
-    public static void main (String[] args){
+    public static void main(String[] args) {
 
         // Création de la fenêtre de l'application
         JFrame fenetre = new JFrame("Jeu style Space Invaders");
@@ -23,7 +23,6 @@ public class Main {
         fenetre.setContentPane(scene);
 
         fenetre.setVisible(true);
-
 
 
     }
