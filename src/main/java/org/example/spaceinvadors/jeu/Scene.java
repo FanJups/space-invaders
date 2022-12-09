@@ -1,6 +1,8 @@
 package org.example.spaceinvadors.jeu;
 
 import org.example.spaceinvadors.entites.Vaisseau;
+import org.example.spaceinvadors.ressources.Chrono;
+import org.example.spaceinvadors.ressources.Clavier;
 import org.example.spaceinvadors.ressources.Constantes;
 
 import javax.swing.*;
@@ -12,6 +14,14 @@ public class Scene extends JPanel {
 
     public  Scene(){
         super();
+
+        this.setFocusable(true);
+        this.requestFocusInWindow();
+        this.addKeyListener(new Clavier());
+
+        // Instanciation du chrono (à la fin du constructeur)
+        Thread chronoEcran = new Thread(new Chrono());
+        chronoEcran.start();
     }
 
     public void paintComponent(Graphics g){
@@ -29,6 +39,6 @@ public class Scene extends JPanel {
         g2.fillRect(30, 530, 535, 5);
 
         // Dessin du vaisseau
-        g2.drawImage(this.vaisseau.getImg(), this.vaisseau.getxPos(), this.vaisseau.getyPos(), null);
+        g2.drawImage(this.vaisseau.getImg(), this.vaisseau.deplacementVaisseau(), this.vaisseau.getyPos(), null);
     }
 }
