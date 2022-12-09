@@ -40,4 +40,12 @@ public abstract class Constantes {
     public final static int DX_ALIEN = 2;
     public final static int DY_ALIEN = 20;
     public static final int VITESSE_ALIEN = 1;
+
+    /************************************ TIR VAISSEAU **********************************/
+    // Dimensions du tir
+    public static final int LARGEUR_TIR_VAISSEAU = 3;
+    public static final int HAUTEUR_TIR_VAISSEAU = 13;
+
+    // Unité de déplacement du tir
+    public final static int DY_TIR_VAISSEAU = 2;
 }
