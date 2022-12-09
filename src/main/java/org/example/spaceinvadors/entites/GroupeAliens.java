@@ -4,6 +4,7 @@ import org.example.spaceinvadors.ressources.Chrono;
 import org.example.spaceinvadors.ressources.Constantes;
 
 import java.awt.*;
+import java.util.Random;
 
 public class GroupeAliens {
 
@@ -11,6 +12,10 @@ public class GroupeAliens {
     // 5 lignes et 10 colonnes
     private final Alien[][] tabAlien = new Alien[5][10];
     private final int[] tabAlienMort = {-1, -1}; // Emplacement alien mort dans tableau aliens
+
+    Random hasard = new Random();
+
+    private int nombreAliens = Constantes.NOMBRE_ALIENS;
     private boolean vaADroite, pos1;
     private int vitesse;
 
@@ -219,6 +224,27 @@ public class GroupeAliens {
     private void elimineAlienMort(int[] tabAlienMort) {
         // Méthode qui enlève l'alien mort du tableau (case à null)
         this.tabAlien[tabAlienMort[0]][tabAlienMort[1]] = null;
+        this.nombreAliens--;
+    }
+
+    public int[] choixAlienQuiTire() {
+        // Renvoie la position d'un alien tiré au hasard dans tabAlien en bas de sa
+        // colonne (ligne, colonne)
+        int positionAlien[] = {-1,-1};
+        if(this.nombreAliens != 0) { // On vérifie qu'il reste des aliens vivants
+            do {int colonne = hasard.nextInt(10); // On tire au hasard une colonne du
+                // tableau des aliens
+                for(int ligne=4;ligne>=0;ligne--) { // On cherche le 1er alien vivant
+                    // en partant du bas
+                    if(tabAlien[ligne][colonne]!= null) {
+                        positionAlien[0] = this.tabAlien[ligne][colonne].getxPos();
+                        positionAlien[1] = this.tabAlien[ligne][colonne].getyPos();
+                        break;
+                    }
+                }
+            } while(positionAlien[0] == -1);
+        }
+        return positionAlien;
     }
 
 

@@ -1,9 +1,6 @@
 package org.example.spaceinvadors.jeu;
 
-import org.example.spaceinvadors.entites.Chateau;
-import org.example.spaceinvadors.entites.GroupeAliens;
-import org.example.spaceinvadors.entites.TirVaisseau;
-import org.example.spaceinvadors.entites.Vaisseau;
+import org.example.spaceinvadors.entites.*;
 import org.example.spaceinvadors.ressources.Chrono;
 import org.example.spaceinvadors.ressources.Clavier;
 import org.example.spaceinvadors.ressources.Constantes;
@@ -19,6 +16,9 @@ public class Scene extends JPanel {
     public TirVaisseau tirVaisseau = new TirVaisseau();
 
     public Chateau[] tabChateaux = new Chateau[4];
+
+    public TirAlien tirAlien1, tirAlien2, tirAlien3;
+
 
     public Scene() {
         super();
@@ -69,6 +69,24 @@ public class Scene extends JPanel {
 
         // Détection contact tirVaisseau avec château
         this.tirVaisseau.tirVaisseauDetruitChateau(tabChateaux);
+
+        // Dessin des tirs des aliens
+        if(Chrono.compteTours % 500 == 0) {
+            tirAlien1 = new TirAlien(this.groupeAliens.choixAlienQuiTire());}
+        if(this.tirAlien1 != null) {
+            this.tirAlien1.dessinTirAlien(g2);
+        }
+        if(Chrono.compteTours % 750 == 0) {
+            tirAlien2 = new TirAlien(this.groupeAliens.choixAlienQuiTire());}
+        if(this.tirAlien2 != null) {
+            this.tirAlien2.dessinTirAlien(g2);
+        }
+        if(Chrono.compteTours % 900 == 0) {
+            tirAlien3 = new TirAlien(this.groupeAliens.choixAlienQuiTire());}
+        if(this.tirAlien3 != null) {
+            this.tirAlien3.dessinTirAlien(g2);
+   
+        }
 
 
     }
