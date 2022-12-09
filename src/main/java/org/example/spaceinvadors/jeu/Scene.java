@@ -18,7 +18,7 @@ public class Scene extends JPanel {
 
     public TirVaisseau tirVaisseau = new TirVaisseau();
 
-    private Chateau tabChateaux[] = new Chateau[4];
+    public Chateau[] tabChateaux = new Chateau[4];
 
     public Scene() {
         super();
@@ -66,6 +66,10 @@ public class Scene extends JPanel {
 
         // Dessin des châteaux
         for(int colonne=0; colonne<4; colonne++) {this.tabChateaux[colonne].dessinChateau(g2);}
+
+        // Détection contact tirVaisseau avec château
+        this.tirVaisseau.tirVaisseauDetruitChateau(tabChateaux);
+
 
     }
 }

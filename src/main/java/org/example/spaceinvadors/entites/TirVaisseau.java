@@ -1,5 +1,6 @@
 package org.example.spaceinvadors.entites;
 
+import org.example.spaceinvadors.jeu.Main;
 import org.example.spaceinvadors.ressources.Constantes;
 
 import javax.swing.*;
@@ -54,5 +55,57 @@ public class TirVaisseau extends  Entite{
             return true;
         }
         else{return false;}
+    }
+
+    private boolean tirVaisseauAHauteurDeChateau() {
+        // Renvoie vrai si le tir du vaisseau est à hauteur des châteaux
+        if(this.yPos < Constantes.Y_POS_CHATEAU + Constantes.HAUTEUR_CHATEAU && this.yPos + this.hauteur > Constantes.Y_POS_CHATEAU) {return true;}
+        else {return false;}
+    }
+
+    private int chateauProche() {
+        // Renvoie le numéro du château (0,1,2 ou 3) dans la zone de tir du vaisseau
+        int numeroChateau = -1;
+        int colonne = -1;
+        while (numeroChateau == -1 && colonne < 4) {
+            colonne++;
+            if(this.xPos + this.largeur > Constantes.MARGE_FENETRE + Constantes.X_POS_INIT_CHATEAU + colonne *
+                    (Constantes.LARGEUR_CHATEAU + Constantes.ECART_CHATEAU)
+                    && this.xPos < Constantes.MARGE_FENETRE + Constantes.X_POS_INIT_CHATEAU + Constantes.LARGEUR_CHATEAU + colonne *
+                    (Constantes.LARGEUR_CHATEAU + Constantes.ECART_CHATEAU)) {
+                numeroChateau = colonne;
+            }
+        }
+        return numeroChateau;
+    }
+
+    private int abscisseContactTirChateau(Chateau chateau) {
+        // Renvoie l'abscisse du tir du vaisseau lors du contact avec un château
+        int xPosTirVaisseau = -1;
+        if(this.xPos + this.largeur > chateau.getxPos() && this.xPos < chateau.getxPos() + Constantes.LARGEUR_CHATEAU){xPosTirVaisseau = this.xPos;}
+        return xPosTirVaisseau;
+    }
+
+    public int[] tirVaisseauToucheChateau() {
+        // Renvoie numéro château touché et abscisse du tir
+        int[] tabRep = {-1, -1};
+        if(this.tirVaisseauAHauteurDeChateau() == true) { // Le tir du vaisseau est à hauteur du château
+            tabRep[0] = this.chateauProche(); // enregistre le numéro du château touché dans tabRep[0]
+            if(tabRep[0] != -1) {
+                //enregistre l'abscisse du tir du vaisseau lors du contact avec le château dans tabRep[1]
+                tabRep[1] = this.abscisseContactTirChateau(Main.scene.tabChateaux[tabRep[0]]);
+            }
+        }
+        return tabRep;
+    }
+
+    public void tirVaisseauDetruitChateau(Chateau tabChateaux[]) {
+        int[] tab = this.tirVaisseauToucheChateau(); // Contient (-1,-1) ou le numéro du château touché et l'abscisse du contact tirVaisseau et château
+        if(tab[0] != -1) { // Un château est touché
+            if(tabChateaux[tab[0]].trouveBrique(tabChateaux[tab[0]].trouveColonneChateau(tab[1])) != -1) {
+                tabChateaux[tab[0]].casseBriques(tab[1]); // Détruit les briques du château touché
+                this.yPos = -1; // On tue le tir et on réactive le canon du vaisseau
+            }
+        }
     }
 }
