@@ -43,4 +43,16 @@ public class TirVaisseau extends  Entite{
         if(this.vaisseauTire == true) {
             g.drawImage(this.img, this.xPos, this.deplacementTirVaisseau(), null);}
     }
+
+    public boolean tueAlien(Alien alien) {
+        // le tir du vaisseau détruit un alien
+        if(this.yPos < alien.getyPos() + alien.getHauteur()
+                && this.yPos + this.hauteur > alien.getyPos()
+                && this.xPos + this.largeur > alien.getxPos()
+                && this.xPos < alien.getxPos() + alien.getLargeur()){
+
+            return true;
+        }
+        else{return false;}
+    }
 }

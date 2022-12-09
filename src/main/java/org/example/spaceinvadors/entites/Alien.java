@@ -28,14 +28,13 @@ public class Alien extends Entite {
     /**** METHODES ****/
     public void choixImage(boolean pos1) {
         // Méthode qui charge l'image de l'alien selon son état et sa position (1 ou 2)
-
-        if (pos1) {
-            super.ico = new ImageIcon(getClass().getResource(strImg1));
-        } else {
-            super.ico = new ImageIcon(getClass().getResource(strImg2));
+        if(this.vivant == true) {
+            if(pos1 == true) {super.ico = new ImageIcon(getClass().getResource(strImg1));}
+            else {super.ico = new ImageIcon(getClass().getResource(strImg2));}
         }
-
+        else {super.ico = new ImageIcon(getClass().getResource(strImg3));}
         super.img = this.ico.getImage(); // recharge l'image
     }
+
 
 }
