@@ -1,5 +1,6 @@
 package org.example.spaceinvadors.jeu;
 
+import org.example.spaceinvadors.entites.GroupeAliens;
 import org.example.spaceinvadors.entites.Vaisseau;
 import org.example.spaceinvadors.ressources.Chrono;
 import org.example.spaceinvadors.ressources.Clavier;
@@ -11,6 +12,7 @@ import java.awt.*;
 public class Scene extends JPanel {
 
     public Vaisseau vaisseau = new Vaisseau();
+    public GroupeAliens groupeAliens = new GroupeAliens();
 
     public  Scene(){
         super();
@@ -40,5 +42,9 @@ public class Scene extends JPanel {
 
         // Dessin du vaisseau
         g2.drawImage(this.vaisseau.getImg(), this.vaisseau.deplacementVaisseau(), this.vaisseau.getyPos(), null);
+
+
+        // Dessin des aliens
+        this.groupeAliens.dessinAliens(g2);
     }
 }
