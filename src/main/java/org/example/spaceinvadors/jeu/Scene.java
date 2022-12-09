@@ -1,5 +1,6 @@
 package org.example.spaceinvadors.jeu;
 
+import org.example.spaceinvadors.entites.Chateau;
 import org.example.spaceinvadors.entites.GroupeAliens;
 import org.example.spaceinvadors.entites.TirVaisseau;
 import org.example.spaceinvadors.entites.Vaisseau;
@@ -17,8 +18,16 @@ public class Scene extends JPanel {
 
     public TirVaisseau tirVaisseau = new TirVaisseau();
 
+    private Chateau tabChateaux[] = new Chateau[4];
+
     public Scene() {
         super();
+
+        // Instanciation des châteaux
+        for(int colonne=0; colonne<4; colonne++) {
+            this.tabChateaux[colonne] = new Chateau(Constantes.MARGE_FENETRE +
+                    Constantes.X_POS_INIT_CHATEAU + colonne * (Constantes.LARGEUR_CHATEAU + Constantes.ECART_CHATEAU));
+        }
 
         this.setFocusable(true);
         this.requestFocusInWindow();
@@ -54,6 +63,9 @@ public class Scene extends JPanel {
 
         // Détection contact tirVaisseau avec alien
         this.groupeAliens.tirVaisseauToucheAlien(this.tirVaisseau);
+
+        // Dessin des châteaux
+        for(int colonne=0; colonne<4; colonne++) {this.tabChateaux[colonne].dessinChateau(g2);}
 
     }
 }
