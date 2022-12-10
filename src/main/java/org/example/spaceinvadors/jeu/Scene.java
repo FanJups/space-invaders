@@ -134,7 +134,9 @@ public class Scene extends JPanel {
             }else {this.soucoupe = null;}
         }
 
+        if(this.groupeAliens.getNombreAliens() == 0) {groupeAliens = new GroupeAliens();}
 
+        if(this.groupeAliens.positionAlienLePlusBas() > Constantes.Y_POS_VAISSEAU) {this.vaisseau.destructionVaisseau();}
 
     }
 }
