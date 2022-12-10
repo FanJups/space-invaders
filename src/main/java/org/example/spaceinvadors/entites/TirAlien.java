@@ -103,4 +103,16 @@ public class TirAlien extends  Entite{
             }
         }
     }
+
+
+    public boolean toucheVaisseau(Vaisseau vaisseau) {
+        // Renvoie vrai si un tirAlien touche le vaisseau
+        if(this.yPos < vaisseau.getyPos() + vaisseau.getHauteur() && this.yPos + this.hauteur > vaisseau.getyPos()
+                && this.xPos + this.largeur > vaisseau.getxPos() && this.xPos < vaisseau.getxPos() + vaisseau.getLargeur()){
+            this.yPos = 700;
+
+            return true;
+        }
+        else{return false;}
+    }
 }

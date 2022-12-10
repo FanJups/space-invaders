@@ -14,7 +14,7 @@ public class Chrono implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
+        while (Main.jeu) {
             compteTours++;
             Main.scene.repaint(); // Appel de la méthode PaintComponent de l'objet scene
             try {
