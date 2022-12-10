@@ -75,17 +75,22 @@ public class Scene extends JPanel {
             tirAlien1 = new TirAlien(this.groupeAliens.choixAlienQuiTire());}
         if(this.tirAlien1 != null) {
             this.tirAlien1.dessinTirAlien(g2);
+            this.tirAlien1.TirAlienDetruitChateau(tabChateaux); // Détection contact tirAlien1 avec château
+
         }
         if(Chrono.compteTours % 750 == 0) {
             tirAlien2 = new TirAlien(this.groupeAliens.choixAlienQuiTire());}
         if(this.tirAlien2 != null) {
             this.tirAlien2.dessinTirAlien(g2);
+            this.tirAlien2.TirAlienDetruitChateau(tabChateaux); // Détection contact tirAlien2 avec château
+
         }
         if(Chrono.compteTours % 900 == 0) {
             tirAlien3 = new TirAlien(this.groupeAliens.choixAlienQuiTire());}
         if(this.tirAlien3 != null) {
             this.tirAlien3.dessinTirAlien(g2);
-   
+            this.tirAlien3.TirAlienDetruitChateau(tabChateaux); // Détection contact tirAlien3 avec château
+           
         }
 
 
