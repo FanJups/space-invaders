@@ -21,6 +21,12 @@ public class Scene extends JPanel {
 
     public Soucoupe soucoupe;
 
+    private Font afficheScore = new Font("Arial", Font.PLAIN, 20);
+    private Font afficheTexte = new Font("Arial", Font.PLAIN, 80);
+
+    public int score=0;
+
+
 
     public Scene() {
         super();
@@ -54,6 +60,10 @@ public class Scene extends JPanel {
         g2.setColor(Color.GREEN);
         g2.fillRect(30, 530, 535, 5);
 
+        // Affichage du score
+        g.setFont(afficheScore);
+        g.drawString("SCORE : " + score, 400, 25);
+
         // Dessin du vaisseau
         this.vaisseau.dessinVaisseau(g2);
 
@@ -68,6 +78,18 @@ public class Scene extends JPanel {
 
         // Dessin des châteaux
         for(int colonne=0; colonne<4; colonne++) {this.tabChateaux[colonne].dessinChateau(g2);}
+
+        // Message de début du jeu
+        if(Chrono.compteTours < 500) {
+            g.setFont(afficheTexte);
+            g.drawString("Good luck !", 95, 100);
+        }
+
+        // Affichage de la fin du jeu
+        if(this.vaisseau.isVivant() == false) {
+            g.setFont(afficheTexte);
+            g.drawString("GAME OVER", 50, 100);
+        }
 
         // Détection contact tirVaisseau avec château
         this.tirVaisseau.tirVaisseauDetruitChateau(tabChateaux);
@@ -102,7 +124,7 @@ public class Scene extends JPanel {
             if(this.soucoupe.getxPos()>0) {
                 // Détection contact tir vaisseau avec soucoupe
                 if(this.tirVaisseau.detruitSoucoupe(this.soucoupe) == true) {
-                  
+                    if(this.soucoupe.getDx() != 0) {this.score = this.score + Constantes.VALEUR_SOUCOUPE;}
                     this.soucoupe.setDx(0);
                     this.soucoupe.setVivant(false);
                     this.soucoupe.musiqueSoucoupe.stop();

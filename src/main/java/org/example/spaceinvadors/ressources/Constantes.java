@@ -84,4 +84,12 @@ public abstract class Constantes {
 
     // Unité de déplacement de la soucoupe
     public final static int DX_SOUCOUPE = 1;
+
+
+    /************************************* POINTS *************************************/
+    // Points attribués pour la destruction des aliens
+    public static final int VALEUR_ALIEN_HAUT = 50;
+    public static final int VALEUR_ALIEN_MILIEU = 40;
+    public static final int VALEUR_ALIEN_BAS = 20;
+    public static final int VALEUR_SOUCOUPE = 100;
 }

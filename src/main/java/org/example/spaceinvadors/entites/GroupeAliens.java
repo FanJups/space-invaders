@@ -1,5 +1,6 @@
 package org.example.spaceinvadors.entites;
 
+import org.example.spaceinvadors.jeu.Main;
 import org.example.spaceinvadors.ressources.Audio;
 import org.example.spaceinvadors.ressources.Chrono;
 import org.example.spaceinvadors.ressources.Constantes;
@@ -212,15 +213,21 @@ public class GroupeAliens {
 
     public void tirVaisseauToucheAlien(TirVaisseau tirVaisseau) {
         // Détection contact tirVaisseau avec alien
-        for (int colonne = 0; colonne < 10; colonne++) {
-            for (int ligne = 0; ligne < 5; ligne++) {
-                if (this.tabAlien[ligne][colonne] != null) {
-                    if (tirVaisseau.tueAlien(this.tabAlien[ligne][colonne])) {
+        for(int colonne=0; colonne<10; colonne++) {
+            for(int ligne=0; ligne<5; ligne++) {
+                if(this.tabAlien[ligne][colonne] != null) {
+                    if(tirVaisseau.tueAlien(this.tabAlien[ligne][colonne]) == true) {
                         this.tabAlien[ligne][colonne].vivant = false; // On tue l'alien
                         tirVaisseau.yPos = -1; // On tue le tir
                         // On enregistre la position de l'alien mort dans le tableau
                         this.tabAlienMort[0] = ligne;
                         this.tabAlienMort[1] = colonne;
+                        if(ligne == 0) {
+                            Main.scene.score = Main.scene.score + Constantes.VALEUR_ALIEN_HAUT;}
+                        else if(ligne>0 && ligne<3) {
+                            Main.scene.score = Main.scene.score + Constantes.VALEUR_ALIEN_MILIEU;}
+                        else {
+                            Main.scene.score = Main.scene.score + Constantes.VALEUR_ALIEN_BAS;}
                         break;
                     }
                 }
