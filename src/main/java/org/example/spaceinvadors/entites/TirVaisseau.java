@@ -1,6 +1,7 @@
 package org.example.spaceinvadors.entites;
 
 import org.example.spaceinvadors.jeu.Main;
+import org.example.spaceinvadors.ressources.Audio;
 import org.example.spaceinvadors.ressources.Constantes;
 
 import javax.swing.*;
@@ -51,6 +52,8 @@ public class TirVaisseau extends  Entite{
                 && this.yPos + this.hauteur > alien.getyPos()
                 && this.xPos + this.largeur > alien.getxPos()
                 && this.xPos < alien.getxPos() + alien.getLargeur()){
+
+            Audio.playSound("/sons/sonAlienMeurt.wav");
 
             return true;
         }

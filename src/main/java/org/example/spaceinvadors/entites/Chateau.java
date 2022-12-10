@@ -1,5 +1,6 @@
 package org.example.spaceinvadors.entites;
 
+import org.example.spaceinvadors.ressources.Audio;
 import org.example.spaceinvadors.ressources.Constantes;
 
 import java.awt.*;
@@ -113,6 +114,7 @@ public class Chateau extends Entite{
 
     public void casseBriques(int xTir) {
         // Récapitule les 3 méthodes qui précédent
+        Audio.playSound("/sons/sonCasseBrique.wav");
         int colonne = this.trouveColonneChateau(xTir);
         this.enleveBriques(trouveBrique(colonne), colonne);
     }
@@ -139,6 +141,7 @@ public class Chateau extends Entite{
 
     public void casseBriquesHaut(int xTir) {
         // Récapitule les 3 méthodes qui précédent
+        Audio.playSound("/sons/sonCasseBrique.wav");
         int colonne = this.trouveColonneChateau(xTir);
         this.enleveBriquesHaut(trouveBriqueHaut(colonne), colonne);
     }

@@ -1,6 +1,7 @@
 package org.example.spaceinvadors.entites;
 
 import org.example.spaceinvadors.jeu.Main;
+import org.example.spaceinvadors.ressources.Audio;
 import org.example.spaceinvadors.ressources.Chrono;
 import org.example.spaceinvadors.ressources.Constantes;
 
@@ -110,7 +111,7 @@ public class TirAlien extends  Entite{
         if(this.yPos < vaisseau.getyPos() + vaisseau.getHauteur() && this.yPos + this.hauteur > vaisseau.getyPos()
                 && this.xPos + this.largeur > vaisseau.getxPos() && this.xPos < vaisseau.getxPos() + vaisseau.getLargeur()){
             this.yPos = 700;
-
+            Audio.playSound("/sons/sonDestructionVaisseau.wav");
             return true;
         }
         else{return false;}

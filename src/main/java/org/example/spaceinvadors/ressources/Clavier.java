@@ -23,6 +23,8 @@ public class Clavier implements KeyListener {
 
                 if(Main.scene.tirVaisseau.isVaisseauTire() == false) {
 
+                    Audio.playSound("/sons/sonTirVaisseau.wav");
+
                     Main.scene.tirVaisseau.setyPos(Constantes.Y_POS_VAISSEAU - Constantes.HAUTEUR_TIR_VAISSEAU);
                     Main.scene.tirVaisseau.setxPos(Main.scene.vaisseau.getxPos() + Constantes.LARGEUR_VAISSEAU/2 - 1);
                     Main.scene.tirVaisseau.setVaisseauTire(true);

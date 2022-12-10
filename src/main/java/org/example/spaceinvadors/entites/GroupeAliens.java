@@ -1,5 +1,6 @@
 package org.example.spaceinvadors.entites;
 
+import org.example.spaceinvadors.ressources.Audio;
 import org.example.spaceinvadors.ressources.Chrono;
 import org.example.spaceinvadors.ressources.Constantes;
 
@@ -18,6 +19,8 @@ public class GroupeAliens {
     private int nombreAliens = Constantes.NOMBRE_ALIENS;
     private boolean vaADroite, pos1;
     private int vitesse;
+
+    private  int compteurSonAlien = 0;
 
     public GroupeAliens() {
 
@@ -197,6 +200,10 @@ public class GroupeAliens {
                 }
             }
         }
+        // les aliens émettent un son
+        this.joueSonAlien();
+        // Incrémentation du compteur de son
+        this.compteurSonAlien++;
         // Changement de l'image de l'alien
         this.pos1 = !this.pos1;
         // Màj du sens de déplacement si un alien atteint le bord de la fenêtre
@@ -245,6 +252,15 @@ public class GroupeAliens {
             } while(positionAlien[0] == -1);
         }
         return positionAlien;
+    }
+
+    private void joueSonAlien() { // Méthode qui joue le son de l'alien (4 sons possibles)
+        int compteur = this.compteurSonAlien % 4;
+        if(compteur==0) {Audio.playSound("/sons/sonAlien1.wav");}
+        else if(compteur==1) {
+            Audio.playSound("/sons/sonAlien2.wav");}
+        else if(compteur==2) {Audio.playSound("/sons/sonAlien3.wav");}
+        else {Audio.playSound("/sons/sonAlien4.wav");}
     }
 
 
