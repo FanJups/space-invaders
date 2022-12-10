@@ -72,4 +72,16 @@ public abstract class Constantes {
 
     // Unité de déplacement du tir
     public final static int DY_TIR_ALIEN = 3;
+
+    /************************************* SOUCOUPE *************************************/
+    // Dimensions de la soucoupe
+    public static final int LARGEUR_SOUCOUPE = 42;
+    public static final int HAUTEUR_SOUCOUPE = 22;
+
+    // Position initiale de la soucoupe
+    public final static int X_POS_INIT_SOUCOUPE = LARGEUR_FENETRE;
+    public final static int Y_POS_SOUCOUPE = 50;
+
+    // Unité de déplacement de la soucoupe
+    public final static int DX_SOUCOUPE = 1;
 }

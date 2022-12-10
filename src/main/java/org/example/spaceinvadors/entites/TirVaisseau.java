@@ -111,4 +111,14 @@ public class TirVaisseau extends  Entite{
             }
         }
     }
+
+    public boolean detruitSoucoupe(Soucoupe soucoupe) {
+        // Contact missile avec la soucoupe
+        if(this.yPos < soucoupe.getyPos() + soucoupe.getHauteur() && this.yPos + this.hauteur > soucoupe.getyPos()
+                && this.xPos + this.largeur > soucoupe.getxPos() && this.xPos < soucoupe.getxPos() + soucoupe.getLargeur()){
+            this.vaisseauTire = false; // On tue le tir
+            return true;
+        }
+        else{return false;}
+    }
 }

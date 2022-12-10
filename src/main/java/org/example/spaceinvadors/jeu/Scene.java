@@ -19,6 +19,8 @@ public class Scene extends JPanel {
 
     public TirAlien tirAlien1, tirAlien2, tirAlien3;
 
+    public Soucoupe soucoupe;
+
 
     public Scene() {
         super();
@@ -93,6 +95,23 @@ public class Scene extends JPanel {
                this.tirAlien3.TirAlienDetruitChateau(tabChateaux); // Détection contact tirAlien3 avec château
             if(this.tirAlien3.toucheVaisseau(vaisseau) == true) {this.vaisseau.setVivant(false);}
         }
+
+        // Dessin de la soucoupe
+        if(Chrono.compteTours % 2500 == 0) {soucoupe = new Soucoupe();}
+        if(this.soucoupe != null) {
+            if(this.soucoupe.getxPos()>0) {
+                // Détection contact tir vaisseau avec soucoupe
+                if(this.tirVaisseau.detruitSoucoupe(this.soucoupe) == true) {
+                  
+                    this.soucoupe.setDx(0);
+                    this.soucoupe.setVivant(false);
+                    this.soucoupe.musiqueSoucoupe.stop();
+                    this.soucoupe.musiqueDestructionSoucoupe.play();
+                }
+                this.soucoupe.dessinSoucoupe(g2);
+            }else {this.soucoupe = null;}
+        }
+
 
 
     }
